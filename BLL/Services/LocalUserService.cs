@@ -32,5 +32,10 @@ namespace BLL.Services
         {
             return _userService.RegisterUser(nickname, email, password);
         }
+
+        public void BanUser(int id)
+        {
+            _userService.BanUser(id);
+        }
     }
 }

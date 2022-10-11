@@ -5,5 +5,6 @@
 	Email VARCHAR(100) NOT NULL,
 	Password VARBINARY(64) NOT NULL,
 	IsAdmin BIT DEFAULT(0), 
-    [Salt] VARCHAR(100) NOT NULL
+    [Salt] VARCHAR(100) NOT NULL,
+	IsActive BIT DEFAULT(1)
 )

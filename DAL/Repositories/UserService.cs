@@ -56,7 +56,7 @@ namespace DAL.Repositories
             {
                 using (SqlCommand cmd = cnx.CreateCommand())
                 {
-                    cmd.CommandText = "SELECT * FROM Users";
+                    cmd.CommandText = "SELECT * FROM V_Users";
 
                     cnx.Open();
                     using (SqlDataReader reader = cmd.ExecuteReader())
@@ -95,6 +95,21 @@ namespace DAL.Repositories
                 }
             }
          throw new Exception();
+        }
+
+        public bool BanUser(int id)
+        {
+            using (SqlConnection cnx = new SqlConnection(_connectionString))
+            {
+                using (SqlCommand cmd = cnx.CreateCommand())
+                {
+                    cmd.CommandText = "DELETE FROM Users WHERE Id = @id";
+
+                    cmd.Parameters.AddWithValue("id", id);
+                    cnx.Open();
+                    return cmd.ExecuteNonQuery() > 0;
+                }
+            }
         }
     }
 }

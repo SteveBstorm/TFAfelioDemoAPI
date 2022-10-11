@@ -58,12 +58,16 @@
     <Folder Include="Properties" />
     <Folder Include="Tables" />
     <Folder Include="StoredProcedure" />
+    <Folder Include="Triggers" />
+    <Folder Include="Views" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Movie.sql" />
     <Build Include="Tables\Users.sql" />
     <Build Include="StoredProcedure\Login.sql" />
     <Build Include="StoredProcedure\RegisterUser.sql" />
+    <Build Include="Triggers\UserSoftDelete.sql" />
+    <Build Include="Views\V_Users.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Script.PostDeployment1.sql" />

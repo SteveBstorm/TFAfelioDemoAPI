@@ -2,6 +2,7 @@
 using DemoAPI.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Cryptography;
 
 namespace DemoAPI.Controllers
 {
@@ -32,6 +33,13 @@ namespace DemoAPI.Controllers
         public IActionResult Login(string email, string password)
         {
             return Ok(_localUserService.Login(email, password));
+        }
+
+        [HttpDelete] 
+        public IActionResult Ban(int id)
+        {
+            _localUserService.BanUser(id);
+            return Ok();
         }
     }
 }
