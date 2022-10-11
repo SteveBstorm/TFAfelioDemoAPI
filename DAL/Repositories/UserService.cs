@@ -97,7 +97,7 @@ namespace DAL.Repositories
          throw new Exception();
         }
 
-        public bool BanUser(int id)
+        public void BanUser(int id)
         {
             using (SqlConnection cnx = new SqlConnection(_connectionString))
             {
@@ -107,7 +107,7 @@ namespace DAL.Repositories
 
                     cmd.Parameters.AddWithValue("id", id);
                     cnx.Open();
-                    return cmd.ExecuteNonQuery() > 0;
+                    cmd.ExecuteNonQuery();
                 }
             }
         }

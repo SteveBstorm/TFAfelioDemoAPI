@@ -14,5 +14,5 @@ EXEC RegisterUser 'Steve', 'test@test.com', 'test1234'
 
 INSERT INTO Movie (Title, Synopsis, ReleaseYear, PEGI) VALUES
 ('Star Wars : New Hope', 'Han et Chewbacca cherche la princesse pour la...', 1977, 6),
-('LOTR : La communauté de l''anneau', '9 Pecnos partent pour un suicide collectif', 1999, 12),
+('LOTR : La communauté de l''anneau', '9 Pecnos partent en road trip', 1999, 12),
 ('Matrix', 'Fallait pas prendre la pillule bleue', 1999, 16)
