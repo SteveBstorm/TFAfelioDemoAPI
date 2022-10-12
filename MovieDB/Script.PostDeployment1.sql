@@ -11,8 +11,13 @@ Modèle de script de post-déploiement
 */
 
 EXEC RegisterUser 'Steve', 'test@test.com', 'test1234'
+EXEC RegisterUser 'Toto', 'admin@test.com', 'test1234'
+
+UPDATE Users SET IsAdmin = 1 WHERE Id = 2
+
 
 INSERT INTO Movie (Title, Synopsis, ReleaseYear, PEGI) VALUES
 ('Star Wars : New Hope', 'Han et Chewbacca cherche la princesse pour la...', 1977, 6),
 ('LOTR : La communauté de l''anneau', '9 Pecnos partent en road trip', 1999, 12),
-('Matrix', 'Fallait pas prendre la pillule bleue', 1999, 16)
+('Matrix', 'Fallait pas prendre la pillule bleue', 1999, 16),
+('Cassetoi', 'juste pour tester le delete', 1999, 16)

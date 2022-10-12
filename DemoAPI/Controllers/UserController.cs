@@ -1,4 +1,6 @@
 ﻿using BLL.Interface;
+using BLL.Models;
+using DemoAPI.Infrastructure;
 using DemoAPI.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -11,10 +13,12 @@ namespace DemoAPI.Controllers
     public class UserController : ControllerBase
     {
         private readonly ILocalUserService _localUserService;
+        private readonly TokenManager _tokenManager;
 
-        public UserController(ILocalUserService localUserService)
+        public UserController(ILocalUserService localUserService, TokenManager tokenManager)
         {
             _localUserService = localUserService;
+            _tokenManager = tokenManager;
         }
 
         [HttpGet]
@@ -30,9 +34,17 @@ namespace DemoAPI.Controllers
         }
 
         [HttpPost("login")]
-        public IActionResult Login(string email, string password)
+        public IActionResult Login(LoginForm form)
         {
-            return Ok(_localUserService.Login(email, password));
+            User u = _localUserService.Login(form.Email, form.Password);
+            ConnectedUser cu = new ConnectedUser
+            {
+                Id = u.Id,
+                NickName = u.NickName,
+                Token = _tokenManager.GenerateToken(u)
+            };
+
+            return Ok(cu);
         }
 
         [HttpDelete] 

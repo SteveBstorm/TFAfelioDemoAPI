@@ -1,6 +1,7 @@
 ﻿using BLL.Interface;
 using BLL.Models;
 using DemoAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,6 +16,7 @@ namespace DemoAPI.Controllers
         {
             _movieService = movieService;
         }
+
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -49,7 +51,7 @@ namespace DemoAPI.Controllers
             }) ;
             return Ok();
         }
-
+        [Authorize("Admin")]
         [HttpDelete("{id:int}")]
         public IActionResult Delete(int id)
         {
